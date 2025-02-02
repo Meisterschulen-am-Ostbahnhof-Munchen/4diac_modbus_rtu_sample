@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<GlobalConstants Name="modbus_const" Comment="Global constants">
+<GlobalConstants Name="modbus_const" Comment="Global constants" >
 	<Identification Standard="61499-1">
 	</Identification>
 	<VersionInfo Version="1.0" Author="franz" Date="2024-08-18">
@@ -7,10 +7,10 @@
 	<CompilerInfo>
 	</CompilerInfo>
 	<GlobalConstants>
-		<VarDeclaration Name="ID_01" Type="WSTRING" Comment="" InitialValue="&quot;modbus[rtu:/dev/uart/1:9600:N:8:1:delay:1:500:c0..7:c0..7]&quot;"/>
+		<VarDeclaration Name="ID_01_RTU" Type="WSTRING" InitialValue="&quot;modbus[rtu:/dev/uart/1:9600:N:8:1:delay:1:500:c0..7:c0..7]&quot;"/>
 	</GlobalConstants>
 	<OriginalSource><![CDATA[VAR_GLOBAL CONSTANT
-	ID_01 : WSTRING := "modbus[rtu:/dev/uart/1:9600:N:8:1:delay:1:500:c0..7:c0..7]";
+	ID_01_RTU : WSTRING := "modbus[rtu:/dev/uart/1:9600:N:8:1:delay:1:500:c0..7:c0..7]";
 END_VAR
 
 ]]></OriginalSource>
