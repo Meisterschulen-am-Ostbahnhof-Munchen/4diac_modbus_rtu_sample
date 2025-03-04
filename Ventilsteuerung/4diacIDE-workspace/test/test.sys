@@ -4,6 +4,8 @@
 	</VersionInfo>
 	<Application Name="App">
 		<SubAppNetwork>
+			<SubApp Name="Control" Type="Ventilsteuerung" x="2500" y="300">
+			</SubApp>
 		</SubAppNetwork>
 	</Application>
 	<Device Name="FORTE_PC" Type="FORTE_PC" x="2760" y="1840">
@@ -15,8 +17,6 @@
 				<FB Name="E_TRIG" Type="E_TRIG" x="2000" y="0">
 					<Parameter Name="EVENTTYPE" Value="'EInit'"/>
 				</FB>
-				<SubApp Name="Ventilsteuerung" Type="Ventilsteuerung" x="1200" y="900">
-				</SubApp>
 				<EventConnections>
 					<Connection Source="START.COLD" Destination="E_TRIG.REQ"/>
 				</EventConnections>
@@ -26,6 +26,7 @@
 	<Segment Name="Ethernet" Type="Ethernet" x="3980" y="1206.67" dx1="2000">
 		<Attribute Name="Color" Type="STRING" Value="233,224,81"/>
 	</Segment>
+	<Mapping From="App.Control" To="FORTE_PC.EMB_RES"/>
 	<Link SegmentName="Ethernet" CommResource="FORTE_PC" Comment="">
 	</Link>
 </System>
