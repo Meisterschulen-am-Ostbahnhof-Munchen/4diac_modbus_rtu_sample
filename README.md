@@ -8,6 +8,13 @@ Das Modul bietet 8 digitale Eingänge (isoliert) und 8 digitale Ausgänge (Relai
 ## Modbus RTU Konfiguration
 Die Konfiguration ist in `modbus_const.gcf` hinterlegt.
 
+### Warum CLIENT_8 und Coils (c)?
+Im Gegensatz zum akYtec-Modul (aus dem TCP-Sample) nutzt dieses Waveshare-Beispiel den klassischen Modbus-Ansatz über Einzelbits (Coils):
+
+1. **Bit-Adressierung**: Über den Präfix `c` (Coils) werden die Relais direkt als einzelne Bits angesprochen. Der String `c0..7` adressiert die ersten 8 Relais des Moduls.
+2. **4diac-Bausteinwahl**: Um diese 8 Bits in Eclipse 4diac einzeln als `BOOL`-Variablen (True/False) verarbeiten zu können, nutzen wir einen **`CLIENT_8`** Baustein. Dieser stellt 8 separate `SD` (Send Data) und `RD` (Receive Data) Ports zur Verfügung – einen für jedes Relais.
+3. **Vergleich zu akYtec**: Während akYtec I/Os zwingend in 16-Bit Worten (Holding Register) bündelt, erlaubt Waveshare den direkten Zugriff auf Bits. Theoretisch könnte auch Waveshare über Holding Register (Register 0x0000 für alle Kanäle) gelesen werden, was dann einen `CLIENT_1` erfordern würde. Der Coil-Zugriff mit `CLIENT_8` ist jedoch intuitiver, wenn man die Kanäle einzeln in der Logik verschalten möchte.
+
 ### Verbindungs-String erklärt
 `modbus[rtu:/dev/uart/1:9600:N:8:1:delay:1:500:c0..7:c0..7]`
 
